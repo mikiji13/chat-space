@@ -4,13 +4,12 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false|
-|group_id|integer|null: false|
 |email|integer|null: false, unique: true|
 
 ### Association
-  belongs_to :group
+  has_many :groups
   has_many :messeges
+  has_many :groups, through: :group_users
 
 
 ## messegesテーブル
@@ -20,6 +19,7 @@
 |body|text|null: false|
 |image|string|
 |group_id|integer|null: false|
+|user_id|integer|null: false|
 
 ### Association
   belongs_to :group
@@ -29,12 +29,11 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false|
-|group_id|integer|null: false|
 
 ### Association
   has_many :users
-  belongs_to :messege
+  has_many :messeges
+  has_many :users, through: :group_users
 
 ## group_usersテーブル
 
@@ -45,4 +44,4 @@
 
 ### Association
   belongs_to :group
-  has_many :users, through: :group_users
+  belongs_to :user
