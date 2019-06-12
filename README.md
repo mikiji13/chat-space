@@ -8,7 +8,7 @@
 
 ### Association
   has_many :groups
-  has_many :messeges
+  has_many :group_users
   has_many :groups, through: :group_users
 
 
@@ -16,7 +16,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|body|text|null: false|
+|body|text|
 |image|string|
 |group_id|integer|null: false|
 |user_id|integer|null: false|
@@ -29,9 +29,10 @@
 
 |Column|Type|Options|
 |------|----|-------|
+|name|integer|null: false|
 
 ### Association
-  has_many :users
+  has_many : group_users
   has_many :messeges
   has_many :users, through: :group_users
 
