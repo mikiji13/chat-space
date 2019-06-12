@@ -4,7 +4,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false, unique: true|
+|name|string|null: false, unique: true, index: ture|
 
 ### Association
   has_many :messages
@@ -18,7 +18,7 @@
 |------|----|-------|
 |body|text|
 |image|string|
-|group_id|integer|null: false|
+|group_id|integer|null: false, foreign_key: true|
 |user|references|null: false, foreign_key: true|
 
 ### Association
@@ -29,10 +29,10 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false, unique: true|
+|name|string|null: false, unique: true, foreign_key: true|
 
 ### Association
-  has_many : group_users
+  has_many :group_users
   has_many :messages
   has_many :users, through: :group_users
 
