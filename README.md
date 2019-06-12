@@ -45,7 +45,5 @@
 |group_id|integer|null: false, foreign_key: true|
 
 ### Association
-  has_many :groups
-  has_many :users
   has_many :group, through: :group_users
   has_many :users, through: :group_users
