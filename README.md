@@ -4,15 +4,15 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|integer|null: false, unique: true|
+|name|string|null: false, unique: true|
 
 ### Association
-  has_many :messeges
+  has_many :messages
   has_many :group_users
   has_many :groups, through: :group_users
 
 
-## messegesテーブル
+## messagesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -29,11 +29,11 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|integer|null: false, unique: true|
+|name|string|null: false, unique: true|
 
 ### Association
   has_many : group_users
-  has_many :messeges
+  has_many :messages
   has_many :users, through: :group_users
 
 ## group_usersテーブル
