@@ -4,10 +4,10 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|email|integer|null: false, unique: true|
+|name|integer|null: false, unique: true|
 
 ### Association
-  has_many :groups
+  has_many :messeges
   has_many :group_users
   has_many :groups, through: :group_users
 
@@ -29,7 +29,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|integer|null: false|
+|name|integer|null: false, unique: true|
 
 ### Association
   has_many : group_users
