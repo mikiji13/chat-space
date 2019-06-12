@@ -10,7 +10,7 @@
 
 ### Association
   belongs_to :group
-  has_many :users
+  has_many :messeges
 
 
 ## messegesテーブル
@@ -18,8 +18,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |body|text|null: false|
-|image|string|null: false|
-|user_id|integer|null: false|
+|image|string|
 |group_id|integer|null: false|
 
 ### Association
@@ -45,5 +44,5 @@
 |group_id|integer|null: false, foreign_key: true|
 
 ### Association
-  has_many :group, through: :group_users
+  belongs_to :group
   has_many :users, through: :group_users
