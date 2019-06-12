@@ -18,7 +18,7 @@
 |------|----|-------|
 |body|text|
 |image|string|
-|group_id|integer|null: false, foreign_key: true|
+|group_id|references|null: false, foreign_key: true|
 |user|references|null: false, foreign_key: true|
 
 ### Association
@@ -41,7 +41,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |user|references|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
+|group_id|references|null: false, foreign_key: true|
 
 ### Association
   belongs_to :group
