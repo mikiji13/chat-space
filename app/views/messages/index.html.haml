@@ -1,0 +1,47 @@
+!!!
+%html{:lan => "ja"}
+  %head
+    %meta{:charset => "UTF-8"}
+  %body
+    .flash-box
+      .notice グループを作成しました
+    .wrapper
+      .chat-side
+        .side-header
+          .side-header__box
+            %p.side-header__box__user-name pテキスト
+            %ul.side-header__box__menu
+              %li.side-header__box__menu__new-group
+                =link_to "li", class: "" do
+                  <i class="fa fa-edit "></i>
+              %li.side-header__box__menu__edit-user
+                =link_to "li", class: "" do
+                  <i class="fa fa-cog "></i>
+        .groups
+          =link_to "", class: "" do
+            .group
+              %p.group__group-name pテキスト
+              %p.group__latest-message pテキスト
+      .chat-main
+        .main-header
+          .main-header__left-box
+            %h2.main-header__left-box__current-group h2タイトル
+            %ul.main-header__left-box__member-list
+              %li.main-header__left-box__member-list__member leftbox
+          =link_to "", class: "" do
+            .main-header__edit-btn Edit
+        .messages
+          .message
+            .message__upper-info
+              .message__upper-info__talker pテキスト
+              .message__upper-info__date p日時
+            .message__text pメッセージ
+        .form
+          %form.new_message
+            %input{:name => "utf8", :type => "hidden"}
+            %input{:type => "hidden", :name => "authenticity_token"}
+            .input-box
+              %input.input-box__text{:placeholder => "type a message"}
+              %label.input-box__image <i class="fa fa-photo "></i>
+            %input.submit-btn{:type => "submit", :name => "commit", :value => "Send"}
+
