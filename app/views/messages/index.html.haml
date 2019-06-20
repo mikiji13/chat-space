@@ -7,7 +7,7 @@
     .main-header
       .main-header__left-box
         %h2.main-header__left-box__current-group
-          = @group.name
+        = @group.name
         %ul.main-header__left-box__member-list
           %li.main-header__left-box__member-list__member leftbox
       =link_to "", class: "" do
@@ -15,14 +15,20 @@
     .messages
       .message
         .message__upper-info
-          .message__upper-info__talker pテキスト
-          .message__upper-info__date p日時
-        .message__text pメッセージ
+          .message__upper-info__talker
+          - @messages.each do |message|
+            = message.user.name
+          .message__upper-info__date
+          - @messages.each do |message|
+            = message.user.name
+        .message__text
+          - @messages.each do |message|
+            = message.content
     .form
-      %form.new_message
-        %input{ name: "utf8",  type: "hidden"}
-        %input{ type: "hidden",  name: "authenticity_token"}
-        .input-box
-          %input.input-box__text{ placeholder: "type a message"}
-          %label.input-box__image <i class="fa fa-photo "></i>
-        %input.submit-btn{ type: "submit", name: "commit", value: "Send"}
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+        .form__mask
+          = f.label :image, class: 'form__mask__image' do
+            = fa_icon 'picture-o', class: 'icon'
+            = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'form__submit'
