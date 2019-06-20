@@ -2,11 +2,12 @@
   .notice グループを作成しました
 .wrapper
   = render 'shared/side_bar', locals: { group: @groups }
-    -# 部分テンプレートに@groupsを渡してあげましょう
+  -# 部分テンプレートに@groupsを渡してあげましょう
   .chat-main
     .main-header
       .main-header__left-box
-        %h2.main-header__left-box__current-group h2タイトル
+        %h2.main-header__left-box__current-group
+          = @group.name
         %ul.main-header__left-box__member-list
           %li.main-header__left-box__member-list__member leftbox
       =link_to "", class: "" do
