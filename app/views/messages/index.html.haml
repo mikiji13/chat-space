@@ -15,7 +15,7 @@
               = message.user.name
             %li.main-header__left-box__member-list__member
               = message.user.name
-      =link_to "", class: "" do
+      =link_to "/groups/#{@group.id}/edit", class: "" do
         .main-header__edit-btn Edit
     .messages
       - @messages.each do |message|
