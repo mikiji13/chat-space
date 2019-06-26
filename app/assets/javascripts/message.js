@@ -31,8 +31,6 @@ $(document).on ('turbolinks:load',function(){
       // htmlの箱にbuildHTML(data)を入れる
       $('.messages').append(html)
       // appendはhtmlをmessage()に追加
-      $('#message_content').val('')
-      // valに入れたコメントを#message_content
       $('.messages').animate({scrollTop:$('.messages')[0].scrollHeight});
       // .messagesをanimateを使って、scrollTopでスクロール、scrollHeightで.messages高さを取得、[0]jsをjqにする
       $('#new_comment')[0].reset();
