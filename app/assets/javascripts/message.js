@@ -15,7 +15,6 @@ $(document).on ('turbolinks:load',function(){
   }
   $('#new_comment').on('submit', function(e){
     e.preventDefault();
-    console.log('非同期');
     var button = e.target;
     var formData = new FormData(this);
     var url = $(this).attr('action')
@@ -28,7 +27,6 @@ $(document).on ('turbolinks:load',function(){
       contentType: false,// リクエストに含まれているdataの型はこれですよ〜の記述（リクエストヘッダにあるらしい）を変更しない
     })
     .done(function(data){
-      console.log(data)
       var html = buildHTML(data);
       // htmlの箱にbuildHTML(data)を入れる
       $('.messages').append(html)
@@ -36,15 +34,14 @@ $(document).on ('turbolinks:load',function(){
       $('#message_content').val('')
       // valに入れたコメントを#message_content
       $('.messages').animate({scrollTop:$('.messages')[0].scrollHeight});
-
-      console.log($('.message')[0])
+      // .messagesをanimateを使って、scrollTopでスクロール、scrollHeightで.messages高さを取得、[0]jsをjqにする
+      $('#new_comment')[0].reset();
+      // #new_comment全体をリセットする
     })
     .fail(function(){
       alert('error');
     })
     .always(function(){
-      // alert('always');
-      // delete button.disabled;
       $(".submit-btn").prop('disabled', false);
     })
   })
