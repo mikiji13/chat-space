@@ -12,10 +12,9 @@
             = fa_icon 'cog', class: 'icon'
   .groups
     - current_user.groups.each do |group|
-      .group
-        = link_to group_messages_path(group) do
-          .group__name
+      = link_to group_messages_path(group) do
+        .group
+          %p.group__name
             = group.name
-          .group__message メッセージはまだありません。
-        -# @groupsのnameを取ってきましょう
-        -# 注意:@groupsは配列なのでeachで回しましょう
+          %p.group__message
+            メッセージはまだありません。

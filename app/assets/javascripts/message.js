@@ -1,4 +1,4 @@
-$(document).on ('turbolinks:load',function(){
+$(function(){
   function buildHTML(comment){
     var text = comment.text ? `<p class="message__text">${comment.text}</p> ` : "" ;
     var image = comment.image ? `<img class="lower-message__image"src="${comment.image}" >` : "" ;
