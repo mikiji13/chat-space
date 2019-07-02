@@ -18,3 +18,5 @@
 
 # コミットしたくないファイル・ディレクトリを指定
 public/uploads/*
+
+config/secrets.yml
