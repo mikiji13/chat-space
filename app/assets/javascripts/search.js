@@ -43,25 +43,31 @@ $(function() {
     // 削除ボタンをクリックした時にremoveさせる
   })
 
-  $("#user-search-field").on("keyup", function() {
+  $("#user-search-field").on("input", function() {
     var input = $("#user-search-field").val();
-    $.ajax({
-      type: 'GET',
-      url: '/users',
-      data: { keyword: input },
-      dataType: 'json'
-    })
-    .done(function(users) {
-      $("#user-search-result").empty();
-      if (users.length !== 0) {
-        users.forEach(function(user){
-          var html = appendUser(user);
-          $("#user-search-result").append(html)
-        });
-      }
-    })
-    .fail(function(){
-      alert("ユーザー検索に失敗しました");
-    })
+    console.log(input.length);
+    if (input.length !== 0) {
+      $.ajax({
+        type: 'GET',
+        url: '/users',
+        data: { keyword: input },
+        dataType: 'json'
+      })
+      .done(function(users) {
+        $("#user-search-result").empty();
+        if (users.length !== 0) {
+          users.forEach(function(user){
+            var html = appendUser(user);
+            $("#user-search-result").append(html)
+          });
+        }
+      })
+      .fail(function(){
+        alert("ユーザー検索に失敗しました");
+      })
+    }
+    else {
+      $(".user-search-result").remove()
+    }
   });
 });
