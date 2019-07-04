@@ -18,7 +18,7 @@ $(function() {
     <div class="chat-group-user clearfix chat-group-form__field">
       <input name='group[user_ids][]' type="hidden" value="${id}" >
       <p class="chat-group-user__name">${name}</p>
-      <a class="user-search-remove chat-group-user__btn chat-group-user__btn--add" data-user-id="${id}" data-user-name="${name}">削除</a>
+      <a class="user-search-remove chat-group-user__btn chat-group-user__btn--add js-remove-btn" data-user-id="${id}" data-user-name="${name}">削除</a>
     </div>
     </div>
     `
@@ -37,16 +37,15 @@ $(function() {
     // 新しい行を指定して、データを挿入する
   })
 
-  $("#chat-group-users").on("click",".user-search-remove", function(){
+  $(document).on("click",".user-search-remove", function(){
     $(this).parent().remove()
     console.log($(this).parent(".chat-group-user").remove())
     // 削除ボタンをクリックした時にremoveさせる
   })
 
-  $("#user-search-field").on("input", function() {
-    var input = $("#user-search-field").val();
-    console.log(input.length);
-    if (input.length !== 0) {
+  $("#user-search-field").on("input", function() { //#user-search-fieldが変更を処理
+    var input = $("#user-search-field").val(); //#user-search-fieldにvarに入れる
+    if (input.length !== 0) { //lengthでinput要素を数字化ifで0番目以外は.doneそれ以外はremove
       $.ajax({
         type: 'GET',
         url: '/users',
